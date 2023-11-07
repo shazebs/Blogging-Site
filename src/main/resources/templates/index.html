@@ -17,7 +17,10 @@
 <body class="materialize">
 	
 	<!-- Welcome message --> 
-	<h2 class="">CST-321: CLOUD COMPUTING, <span style="color:mediumpurple">Grand Canyon University</span>.<br/><h1 style="color:dodgerblue">Blogging Site<span style="color:black;">!</span>💔🖤🤍 </h1></h2>			
+	<h2 style="margin-bottom:0;">CST-321: CLOUD COMPUTING, <span style="color:mediumpurple">Grand Canyon University</span>.</h2>
+	<div style="display:flex; font-size:2em; margin-bottom:6px;">
+		<div style="color:dodgerblue; width:fit-content;">Blogging Site<span style="color:black;">!</span></div><div class="wrld-hearts" style="width:fit-content;">💔🖤🤍 </div>
+	</div>		
 	
 	<!-- If this if a fresh instance of the page, prompt this --> 
 	<div th:if='${AccessGranted.equals("null")}'>
@@ -51,7 +54,7 @@
 		</form>
 	</div>	
 		
-
+	<!-- bar graph animation --> 
 	<div class="logo-holder">
 	  <div class="bg"></div>
 	  <div class="bar"></div>

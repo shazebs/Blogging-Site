@@ -32,8 +32,13 @@ button {
 }
 
 .materialize {
-	animation: Materialize 0.55s ease-in-out forwards;
+	animation: Materialize 0.65s ease-in-out forwards;
 	transform: translateY(25px);
+}
+
+.wrld-hearts {
+	animation: MaterializeLeftAlign 1.1s ease-out forwards;
+	transform: translateX(100px);
 }
 
 @keyframes Materialize {
@@ -60,7 +65,7 @@ button {
 
 
 
-
+/* for bar graph animation */
 
 .logo-holder {
     /*background: #f2f2f2;*/
