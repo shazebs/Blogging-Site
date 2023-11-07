@@ -36,6 +36,10 @@ public class Blog
 
 	
 	// methods
+	/**
+	 * Limit the blog text content to 300 characters. 
+	 * @return preview for blog text
+	 */
 	public String getLimitedBlog() 
 	{
 		int maxLength = 300; 
