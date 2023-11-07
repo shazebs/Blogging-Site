@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>BloggingSite</title>	
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<link th:href="@{/styles/site.css}" rel="stylesheet" />
+	<style>
+	</style>
+</head>
+
+<nav th:replace="~{layouts/common :: navbar}"></nav>
+<!--<div th:if='${AccessGranted.equals("true")}'>-->
+		
+<body class="materialize">
+		
+	<div>				
+		<p>You are logged in as '<span th:text="${username}"></span>'</p>
+
+		<div>			
+			<label>Author: <span th:text="${blog.getUsername()}"></span></label><br/>					
+			<label>Published: <span th:text="${blog.getTimestamp()}"></span></label><hr/>
+			<div style="transform:translateY(-3px)">
+				<div th:text="${blog.getBlogText()}" style="margin:1% 6px; margin-bottom:2%;"></div>
+			</div><hr/>
+		</div>	
+		
+		<!-- access denied prompt for any unauthorized user accessing homepage --> 
+		<div th:if='${AccessGranted.equals("false") || AccessGranted.equals("null")}'>
+			<p>You do not have permission to comment on this page. Try logging in <a th:href="@{/}">here</a>.</p>
+		</div>
+	
+		<div th:if='${AccessGranted.equals("true")}' style="margin-top:1%;">
+			<form action="#" th:action="@{'/blog/' + ${blog.getBlogId()}}" th:object="${CommentForm}" method="POST">
+				<input type="hidden" th:field="*{BlogId}"/>
+				<textarea id="BlogCommentInput" type="text" th:field="*{CommentText}" placeholder="Type your comment here" style="min-height:200px;width:100%;" required></textarea>
+				<button type="Submit" style="margin:10px;margin-left:0px;">Comment</button>
+			</form>
+		</div>
+		<hr/>
+				
+		<h3 style="margin-top:1%;">Comments (<span th:text="${Comments.size()}"></span>)</h3>	
+		<div th:each="comment : ${Comments}" style="padding:1% 5%;">			
+			<label>Author: <span th:text="${comment.getUsername()}"></span></label><br/>					
+			<label>Published: <span th:text="${comment.getTimestamp()}"></span></label><br/>
+			<div style="padding:2px 5%;margin-top:2%;">
+				<div th:text="${comment.getCommentText()}"></div>
+			</pre>		
+		</div>
+		<hr>		
+	</div>
+	
+</body>
+</html>
