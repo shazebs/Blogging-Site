@@ -75,18 +75,21 @@ public class RouteController
 	@GetMapping("/")
 	public String Index(Model model)
 	{
-		logger.trace("RouteController:Index(): Landing on Index page.");
+		logger.trace("Enterin RouteController:Index(): Landing on Index page.");
 		
 		LoginForm loginForm = new LoginForm(); 
 		
 		model.addAttribute("LoginForm", loginForm);
-		model.addAttribute("AccessGranted", AccessGranted); 		
+		model.addAttribute("AccessGranted", AccessGranted); 	
 		if (AccessGranted.equals("true")) 
 		{
 			model.addAttribute("username", validUsername);
 		}
 		
-		logger.info("Exiting RouteController:Index() with ['AccessGranted']=" + AccessGranted);
+		int user_count_result = database.GET_UserCount(); 
+		model.addAttribute("UserCount", user_count_result); 
+		
+		logger.info("Exiting RouteController:Index() with ['AccessGranted']=" + AccessGranted + " and ['UserCount']="+user_count_result);
 		
 		return "index.html"; 
 	}

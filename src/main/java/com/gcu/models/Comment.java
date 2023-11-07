@@ -1,5 +1,8 @@
 package com.gcu.models;
 
+/**
+ * This model is for retrieving comment objects from database.
+ */
 public class Comment
 {
 	public int CommentId;

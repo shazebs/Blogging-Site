@@ -1,5 +1,8 @@
 package com.gcu.models;
 
+/**
+ * This model is for registration form submissions.
+ */
 public class RegisterForm 
 {
 	private String Username; 
@@ -30,7 +33,10 @@ public class RegisterForm
 	public void setPassword1(String x) { this.Password1 = x; }
 	public void setPassword2(String x) { this.Password2 = x; }
 	
-	// methods
+	/**
+	 * Our custom toString method
+	 * @return username, password1, and password2
+	 */
 	public String ToString()
 	{
 		return String.format("['Username']=%s, ['Password1']=%s, ['Password2']=%s", 

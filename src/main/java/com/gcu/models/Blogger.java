@@ -2,6 +2,9 @@ package com.gcu.models;
 
 import java.util.List;
 
+/**
+ * This model represent end-users.
+ */
 public class Blogger 
 {
 //	public int BloggerId; 
@@ -22,7 +25,10 @@ public class Blogger
 	public void setUsername(String x) { this.Username = x; }
 	public void setPassword(String x) { this.Password = x; }
 	
-	// methods
+	/**
+	 * Our custom toString method.
+	 * @return username and password
+	 */
 	public String ToString()
 	{
 		return String.format("['Username']=%s, ['Password']=%s", 

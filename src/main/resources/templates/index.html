@@ -17,7 +17,7 @@
 <body class="materialize">
 	
 	<!-- Welcome message --> 
-	<h2 class="">CST-321: CLOUD COMPUTING, <span style="color:mediumpurple">Grand Canyon University</span>.<br/><h1 style="color:dodgerblue">Blogging Site!💔🖤🤍 </h1></h2>			
+	<h2 class="">CST-321: CLOUD COMPUTING, <span style="color:mediumpurple">Grand Canyon University</span>.<br/><h1 style="color:dodgerblue">Blogging Site<span style="color:black;">!</span>💔🖤🤍 </h1></h2>			
 	
 	<!-- If this if a fresh instance of the page, prompt this --> 
 	<div th:if='${AccessGranted.equals("null")}'>
@@ -42,11 +42,11 @@
 			<input id="UsernameInput" type="text" th:field="*{Username}" placeholder="Type username here" required />
 			<br/>		
 			<!-- password input --> 
-			<label>Password:</label><br/>
+			<label style="margin-top:8px;">Password:</label><br/>
 			<input id="PasswordInput" type="text" th:field="*{Password}" placeholder="Type password here" required />
 			<br/>
 			<!-- submit login button --> 
-			<button id="LoginSubmit" type="submit" style="margin-top:10px;">Login</button>	
+			<button id="LoginSubmit" type="submit" style="margin-top:15px;">Login</button> <span style="padding-left:8px;">[ <big style="font-weight:bold; color:orangered;" th:text="${UserCount}"></big> registered users ]</span>
 			<br/>
 		</form>
 	</div>	

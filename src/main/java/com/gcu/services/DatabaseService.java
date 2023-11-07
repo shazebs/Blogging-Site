@@ -98,6 +98,8 @@ public class DatabaseService
 	 */
 	public boolean POST_Blog(BlogForm blogForm)
 	{
+		logger.info("Entering DatabaseService:POST_Blog()");
+		
 		timestamp = LocalDateTime.now();  
         blogForm.setTimestamp(timestamp.format(formatter));
         
@@ -190,6 +192,8 @@ public class DatabaseService
 	 */
 	public Blog GET_Blog(int blog_id)
 	{
+		logger.info("Entering Database:GET_Blog() with ['blog_id']="+blog_id);
+		
 		Blog blog = null; 
 		try {
 			String sql = "SELECT * FROM blogs WHERE blog_id = ?";
@@ -350,5 +354,30 @@ public class DatabaseService
 			e.printStackTrace();
 		}
 		return 0;
+	}
+	
+	/**
+	 * Get the total number of registered users in the database.
+	 * @return number of total registered users
+	 */
+	public int GET_UserCount()
+	{
+		int count = 0; 
+		
+		logger.info("Entering DatabaseService:GET_UserCount()");
+		try
+		{
+			String sql = "SELECT COUNT(*) FROM bloggers;";
+			count = database.queryForObject(sql, new Object[]{}, Integer.class);
+		}
+		catch (Exception e)
+		{
+			logger.error(e.getMessage());
+			e.printStackTrace();
+		}
+		
+		logger.info("Exiting DatabaseService:GET_UserCount() with total number of registered users = "+count);
+		
+		return count;
 	}
 }

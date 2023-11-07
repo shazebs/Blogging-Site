@@ -1,5 +1,8 @@
 package com.gcu.models;
 
+/**
+ * This model is for submitting new comments.
+ */
 public class CommentForm 
 {
 	private int BlogId; 

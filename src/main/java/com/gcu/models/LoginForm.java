@@ -1,5 +1,8 @@
 package com.gcu.models;
 
+/**
+ * This model is for submitting a new login attempt.
+ */
 public class LoginForm
 {
 	private String Username;
@@ -27,7 +30,10 @@ public class LoginForm
 	public void setUsername(String x) { this.Username = x; }
 	public void setPassword(String x) { this.Password = x; }
 	
-	// methods
+	/**
+	 * Our custom toString method
+	 * @return username and password 
+	 */
 	public String ToString()
 	{
 		return String.format("['Username']=%s, ['Password']=%s", 

@@ -25,7 +25,7 @@
 			<artifactId>mssql-jdbc</artifactId>
 			<scope>runtime</scope>
 		</dependency>-->
-		<!-- for MySQL Server --> 
+		<!-- for MySQL Server -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>

@@ -2,6 +2,9 @@ package com.gcu.models;
 
 import java.util.List;
 
+/**
+ * This is our core Blog object.
+ */
 public class Blog
 {
 	private int BlogId;

@@ -1,5 +1,8 @@
 package com.gcu.models;
 
+/**
+ * This model is for submitting new blogs.
+ */
 public class BlogForm 
 {
 	private String Username;
