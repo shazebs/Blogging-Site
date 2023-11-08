@@ -22,7 +22,7 @@
 		
 		<div>		
 			<div style="display:flex; width:100%;">
-				<div style="width:100%; font-size:1.05em;"><span style="color:dodgerblue">@</span><span th:text="${blog.getUsername()}"></span></div>	
+				<div style="width:100%; font-size:1.05em;"><span style="color:dodgerblue">@</span> <span th:text="${blog.getUsername()}"></span></div>	
 				<div th:text="${blog.getTimestamp()}" style="width:100%; text-align:right;"></div>
 			</div>	
 			
@@ -52,7 +52,7 @@
 		<div th:each="comment : ${Comments}" style="padding:1% 3%;">	
 					
 			<div style="display:flex; width:100%;">
-				<div style="width:100%; font-size:1.05em;"><span style="color:dodgerblue">@</span><span th:text="${comment.getUsername()}"></span></div>	
+				<div style="width:100%; font-size:1.05em;"><span style="color:dodgerblue">@</span> <span th:text="${comment.getUsername()}"></span></div>	
 				<div th:text="${comment.getTimestamp()}" style="width:100%; text-align:right;"></div>
 			</div>
 			

@@ -37,7 +37,7 @@
 				<div th:each="blog : ${Blogs}">		
 									
 					<div style="display:flex; width:100%;">
-						<div style="width:100%; font-size:1.05em;"><span style="color:dodgerblue">@</span><span th:text="${blog.getUsername()}"></span></div>	
+						<div style="width:100%; font-size:1.05em;"><span style="color:dodgerblue">@</span> <span th:text="${blog.getUsername()}"></span></div>	
 						<div th:text="${blog.getTimestamp()}" style="width:100%; text-align:right;"></div>
 					</div>	
 					
