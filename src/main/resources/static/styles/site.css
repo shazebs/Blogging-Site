@@ -36,6 +36,11 @@ button {
 	transform: translateY(25px);
 }
 
+pre.wrap {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
 .wrld-hearts {
 	animation: MaterializeLeftAlign 1.1s ease-out forwards;
 	transform: translateX(100px);

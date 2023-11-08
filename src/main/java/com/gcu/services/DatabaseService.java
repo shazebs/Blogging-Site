@@ -92,6 +92,36 @@ public class DatabaseService
 	}
 	
 	/**
+	 * Check if user already made this blog post before.
+	 * @param blogForm the submitted blog post
+	 * @return true or false if blog already exists
+	 */
+	public boolean GET_BlogExists(BlogForm blogForm)
+	{
+		logger.info("Entering DatabaseService:GET_BlogExists() with ['BlogForm.Username']="+blogForm.getUsername()+" and ['BlogForm.BlogText']="+blogForm.getBlogText());
+		
+		try 
+		{
+			String sql = "SELECT COUNT(*) FROM blogs WHERE user_name LIKE ? AND blog_text = ?;";
+			int blog_exists_result = database.queryForObject(sql, new Object[] { blogForm.getUsername(), blogForm.getBlogText() }, Integer.class);
+			if (blog_exists_result > 0)
+			{
+				logger.info("Exiting Database:GET_BlogExists() with true");
+				return true;
+			}
+		}
+		catch (Exception e)
+		{
+			logger.error(e.getMessage());
+			e.printStackTrace();
+			logger.info("ERROR: SqlException in DatabaseService:GET_BlogExists()");
+		}
+		
+		logger.info("Exiting Database:GET_BlogExists() with false");
+		return false; 
+	}
+	
+	/**
 	 * Post a new Blog to the database.
 	 * @param blogForm a form submitted by blog create page
 	 * @return true or false if Blog was posted
@@ -105,8 +135,11 @@ public class DatabaseService
         
 		int queryResult = -1;
 		try {
-			String sql = "INSERT INTO blogs (user_name, blog_text, time_stamp) VALUES (?, ?, ?)";
-			queryResult = database.update(sql, blogForm.getUsername(), blogForm.getBlogText(), blogForm.getTimestamp());
+			if (!GET_BlogExists(blogForm))
+			{				
+				String sql = "INSERT INTO blogs (user_name, blog_text, time_stamp) VALUES (?, ?, ?)";
+				queryResult = database.update(sql, blogForm.getUsername(), blogForm.getBlogText(), blogForm.getTimestamp());
+			}
 		}
 		catch (Exception e)
 		{
@@ -116,7 +149,7 @@ public class DatabaseService
 		
 		logger.info("Exiting DatabaseService:POST_Blog() with "+(queryResult > 0));
 		
-		return false; 
+		return queryResult > 0; 
 	}
 	
 	/**

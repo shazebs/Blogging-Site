@@ -40,12 +40,12 @@ public class Blog
 	
 	// methods
 	/**
-	 * Limit the blog text content to 300 characters. 
+	 * Limit the blog text content to 1000 characters. 
 	 * @return preview for blog text
 	 */
 	public String getLimitedBlog() 
 	{
-		int maxLength = 300; 
+		int maxLength = 1000; 
 		if (this.BlogText.length() > maxLength) 
 		{
             String limitedString = this.BlogText.substring(0, maxLength - 3) + "...";

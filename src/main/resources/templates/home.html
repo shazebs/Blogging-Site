@@ -18,29 +18,40 @@
 	<!-- if user has successfully logged in prompt --> 
 	<div th:if='${AccessGranted.equals("true")}'>
 		
-		<p>You are logged in as '<span th:text="${username}"></span>'</p><hr/>
+		<p style="margin-bottom:0; padding-bottom:1rem; border-bottom:1px solid black;">You are logged in as '<span th:text="${username}"></span>'</p>
 		
 		<!--<a th:href="@{/create}" style="border:3px solid limegreen; padding:5px; border-radius:5px;">Create Blog</a>-->
 		
 		<div style="margin-top:15px; display:flex; flex-direction:row; width:100%;">
 			
 			<!-- Here's a section with our blog bookmarks --> 
-			<section id="favorites_tab" style="min-width:75px;width:20%;padding:4px; padding-left:6px;display:none;">
-				<u>Favorites</u> <br>
+			<section id="favorites_tab" style="min-width:75px; width:20%; padding:4px; padding-left:0px; padding-right:12px; display:none; border-right:1px solid black;">
+				<b style="line-height:0;">Notifications</b><hr style="margin:8px 0;" />
+				<i>Coming soon.</i>
 			</section>		
 			
 			<!-- published blogs are listed starting here --> 
-			<section id="published_blogs" style="width:100%;padding:6px;padding-left:10px;">
+			<section id="published_blogs" style="width:100%; padding:6px; padding-left:10px;">
+				
 				<!--<h5>Here are the published blogs.</h5>-->				
-				<div th:each="blog : ${Blogs}">			
-					<label>Author: <span th:text="${blog.getUsername()}"></span></label><br/>					
-					<label>Published: <span th:text="${blog.getTimestamp()}"></span></label><br/>
-					<div style="padding:2px 5%;">
-						<span th:text="${blog.getLimitedBlog()}"></span><br/>
-						<a th:href="@{'/blog/' + ${blog.getBlogId()}}">Read More</a> -- Comments (<span th:text="${blog.CommentCount}"></span>) <br/>
-					</div>					
-					<hr>
-				</div>				
+				<div th:each="blog : ${Blogs}">		
+									
+					<div style="display:flex; width:100%;">
+						<div style="width:100%; font-size:1.05em;"><span style="color:dodgerblue">@</span><span th:text="${blog.getUsername()}"></span></div>	
+						<div th:text="${blog.getTimestamp()}" style="width:100%; text-align:right;"></div>
+					</div>	
+					
+					<div style="padding:1%;">
+						<!-- blog text --> 
+						<pre class="wrap" th:text="${blog.getLimitedBlog()}"></pre>
+						
+						<!-- view blog link --> 
+						<a th:href="@{'/blog/' + ${blog.getBlogId()}}">Read More</a> -- Comments (<span th:text="${blog.CommentCount}"></span>)
+					</div>	
+					<hr/>
+					
+				</div>	
+							
 			</section>
 			
 		</div>		

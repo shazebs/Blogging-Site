@@ -19,7 +19,7 @@
 	<!-- if user has successfully logged in prompt --> 
 	<div th:if='${AccessGranted.equals("true")}'>
 		
-		<p>You are logged in as '<span th:text="${username}"></span>'</p>
+		<p style="margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid black;">You are logged in as '<span th:text="${username}"></span>'</p>
 		
 		<form action="#" th:action="@{/home}" th:object="${BlogForm}" method="POST">
 			
